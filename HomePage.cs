@@ -1,31 +1,31 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace myNUnit
 {
-    public class HomePage
+    public class HomePage : BasePage
     {
-        // Zmienna przechowująca referencję do karty przeglądarki
-        private readonly IPage _page;
-        // Lokator zdefiniowany tylko RAZ w całym projekcie!
         private readonly ILocator _getStartedButton;
+        private readonly ILocator _searchButton;
 
-        // Konstruktor. Uruchamia się w momencie, gdy w teście powiemy "new HomePage()".
-        // "Połyka" on naszą przeglądarkę z testu i ustawia lokatory.
-        public HomePage(IPage page)
+
+        public HomePage(IPage page) : base(page)
         {
-            _page = page;
             _getStartedButton = _page.GetByRole(AriaRole.Link, new() { NameString = "Get started" });
+            _searchButton = _page.GetByRole(AriaRole.Button, new() { NameString = "Search" });
         }
 
         // Metoda, która będzie klikać w przycisk "Get started".
-        public async Task ClickGetStartedButtonAsync()
+        public async Task<IntroPage> ClickGetStartedButtonAsync()
         {
             await _getStartedButton.ClickAsync();
+
+            return new IntroPage(_page);
+        }
+
+        public async Task<SearchModal> ClickSearchButtonAsync()
+        {
+            await _searchButton.ClickAsync();
+            return new SearchModal(_page);
         }
     }
 }
