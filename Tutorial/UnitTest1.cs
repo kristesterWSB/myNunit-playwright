@@ -1,10 +1,11 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace myNUnit;
+namespace myNUnit.DevTest;
 
-public class NavigationTests : TestBase
+public class NavigationTests : TestBaseDev
 {
     [Test]
+    [Ignore("devTest")]
     public async Task ShouldNavigateToIntroPage()
     {
         // Brak GotoAsync! (Zrobił to za nas [SetUp])
@@ -21,6 +22,7 @@ public class NavigationTests : TestBase
     }
 
     [Test]
+    [Ignore("devTest")]
     public async Task ShouldSearchForLocatorsArticle()
     {
         var searchModal = await HomePage.ClickSearchButtonAsync();
@@ -32,6 +34,6 @@ public class NavigationTests : TestBase
 
         var articlePage = await searchModal.ClickFirstItemAsync();
 
-        await articlePage.ValidateArticleHeaderAsync("Locators");
+        await articlePage.ValidateArticleHeaderAsync("Locators-badtext");
     }
 }

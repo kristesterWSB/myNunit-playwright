@@ -1,8 +1,8 @@
 ﻿using Microsoft.Playwright;
 
-namespace myNUnit
+namespace myNUnit.DevTest
 {
-    public class HomePage : BasePage
+    public class HomePage : BasePageDev
     {
         private readonly ILocator _getStartedButton;
         private readonly ILocator _searchButton;

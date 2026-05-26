@@ -1,8 +1,8 @@
 ﻿using Microsoft.Playwright;
 
-namespace myNUnit
+namespace myNUnit.DevTest
 {
-    public class SearchModal : BasePage
+    public class SearchModal : BasePageDev
     {
         private readonly ILocator _searchInput;
         private readonly ILocator _searchResult;

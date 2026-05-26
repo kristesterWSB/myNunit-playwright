@@ -1,9 +1,9 @@
 ﻿using Microsoft.Playwright;
 using static Microsoft.Playwright.Assertions;
 
-namespace myNUnit
+namespace myNUnit.DevTest
 {
-    public class ArticlePage : BasePage
+    public class ArticlePage : BasePageDev
     {
 
         private readonly ILocator _articleHeader;

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Playwright;
 using static Microsoft.Playwright.Assertions; //linijka dająca dostęp do Expect() w POM
 
-namespace myNUnit
+namespace myNUnit.DevTest
 {
-    public class IntroPage : BasePage
+    public class IntroPage : BasePageDev
     {
         private readonly ILocator _mainHeader;
         public IntroPage(IPage page) : base(page)
