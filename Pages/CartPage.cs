@@ -6,9 +6,17 @@ namespace myNUnit.Pages
     public class CartPage : BasePage
     {
         private readonly ILocator _cartItems;
+        private readonly ILocator _checkoutButton;
         public CartPage(IPage page) : base(page)
         {
             _cartItems = _page.Locator("[data-test='inventory-item']");
+            _checkoutButton = _page.Locator("[data-test='checkout']");
+        }
+
+        public async Task<CheckoutInfoPage> ClickCheckoutButton()
+        {
+            await _checkoutButton.ClickAsync();
+            return new CheckoutInfoPage(_page);
         }
 
         #region Assertions
