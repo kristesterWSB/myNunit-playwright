@@ -8,7 +8,7 @@
       <PWDEBUG>1</PWDEBUG>
     </EnvironmentVariables>
 
-    <TestCaseFilter>FullyQualifiedName~ShouldCompleteOrderProcess</TestCaseFilter>
+    <!--<TestCaseFilter>FullyQualifiedName~ShouldCompleteOrderProcess</TestCaseFilter>-->
 
     </RunConfiguration>
 </RunSettings>
