@@ -6,17 +6,18 @@ namespace myNUnit.Tests
     public class E2EAdvancedFluentTests : TestBase
     {
         [Test]
-        public async Task ShouldCompleteOrderProcessAdvancedFluent()
+        [TestCase("Sauce Labs Bike Light", "John", "Doe", "12345", "Thank you for your order!")]
+        public async Task ShouldCompleteOrderProcessAdvancedFluent(string itemName, string firstName, string lastName, string postalCode, string expectedMessage)
         {
             await LoginViaCookieAsync()
-                .Then(inventory => inventory.ClickAddToCartBikeLightAsync("Sauce Labs Bike Light"))
+                .Then(inventory => inventory.ClickAddToCartBikeLightAsync(itemName))
                 .Then(inventory => inventory.GoToCartAsync())
-                .Then(cart => cart.ValidteCartItem("Sauce Labs Bike Light"))
+                .Then(cart => cart.ValidteCartItem(itemName))
                 .Then(cart => cart.ClickCheckoutButton())
-                .Then(checkoutInfo => checkoutInfo.FillCheckoutFormAsync("John", "Doe", "12345"))
+                .Then(checkoutInfo => checkoutInfo.FillCheckoutFormAsync(firstName, lastName, postalCode))
                 .Then(checkoutInfo => checkoutInfo.ClickContinueButtonAsync())
                 .Then(checkoutOverview => checkoutOverview.ClickFinishButtonAsync())
-                .Then(checkoutComplete => checkoutComplete.ValidateCheckoutCompletedOrderAsync("Thank you for your order!"));
+                .Then(checkoutComplete => checkoutComplete.ValidateCheckoutCompletedOrderAsync(expectedMessage));
 
         }
     }

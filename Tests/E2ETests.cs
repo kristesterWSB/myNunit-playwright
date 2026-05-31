@@ -1,4 +1,7 @@
-﻿namespace myNUnit.Tests
+﻿using myNUnit.TestData;
+using Bogus;
+
+namespace myNUnit.Tests 
 {
     public class E2ETests : TestBase
     {
@@ -7,27 +10,32 @@
         {
             var inventoryPage = await LoginViaCookieAsync();
             await inventoryPage.ValidateLoginSucessfullyAsync();
-            await inventoryPage.ClickAddToCartBikeLightAsync("Sauce Labs Bike Light");
+            await inventoryPage.ClickAddToCartBikeLightAsync(Constants.Products.BikeLight);
             var cartPage = await inventoryPage.GoToCartAsync();
-            await cartPage.ValidteCartItem("Sauce Labs Bike Light");
+            await cartPage.ValidteCartItem(Constants.Products.BikeLight);
         }
 
         [Test]
         public async Task ShouldCompleteOrderProcess()
         {
+            var faker = new Faker("pl");
+            var firstName = faker.Name.FirstName();
+            var lastName = faker.Name.LastName();
+            var postalCode = faker.Address.ZipCode();
+
             var inventoryPage = await LoginViaCookieAsync();
-            await inventoryPage.ClickAddToCartBikeLightAsync("Sauce Labs Bike Light");
+            await inventoryPage.ClickAddToCartBikeLightAsync(Constants.Products.BikeLight);
 
             var cartPage = await inventoryPage.GoToCartAsync();
-            await cartPage.ValidteCartItem("Sauce Labs Bike Light");
+            await cartPage.ValidteCartItem(Constants.Products.BikeLight);
 
             var checkoutInfoPage = await cartPage.ClickCheckoutButton();
-            await checkoutInfoPage.FillCheckoutFormAsync("John", "Doe", "12345");
+            await checkoutInfoPage.FillCheckoutFormAsync(firstName, lastName, postalCode);
 
             var checkoutOverviewPage = await checkoutInfoPage.ClickContinueButtonAsync();
 
             var checkoutCompletePage = await checkoutOverviewPage.ClickFinishButtonAsync();
-            await checkoutCompletePage.ValidateCheckoutCompletedOrderAsync("Thank you for your order!");
+            await checkoutCompletePage.ValidateCheckoutCompletedOrderAsync(Constants.Messages.OrderSuccess);
 
         }
     }
