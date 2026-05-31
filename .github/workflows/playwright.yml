@@ -33,7 +33,7 @@ jobs:
       run: pwsh bin/Debug/net9.0/playwright.ps1 install --with-deps
 
     - name: Run Playwright tests
-      run: dotnet test --no-build --verbosity normal --settings playwright.runsettings
+      run: dotnet test --no-build --verbosity normal
 
     - name: Upload Traces and Test Results
       if: always() 
