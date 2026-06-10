@@ -1,0 +1,6 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","456","ShouldLoginSuccessfullyAsStandardUserAsync","","2026-06-10","passed","2026-06-10","","","LoginTests","ShouldLoginSuccessfullyAsStandardUserAsync"
+"","449","ShouldBypassLoginUsingCookies","","2026-06-10","passed","2026-06-10","","","LoginTests","ShouldBypassLoginUsingCookies"
+"","883","ShouldCompleteOrderProcess","","2026-06-10","passed","2026-06-10","","","E2ETests","ShouldCompleteOrderProcess"
+"","572","ShouldItemAddedToBasket","","2026-06-10","passed","2026-06-10","","","E2ETests","ShouldItemAddedToBasket"
+"","1408","ShouldCompleteOrderProcessAdvancedFluent(""Sauce Labs Bike Light"",""John"",""Doe"",""12345"",""Thank you for your order!"")","","2026-06-10","passed","2026-06-10","","","E2EAdvancedFluentTests","ShouldCompleteOrderProcessAdvancedFluent"
