@@ -1,9 +1,11 @@
 ﻿using Microsoft.Playwright.NUnit;
 using myNUnit.Configuration;
 using myNUnit.Pages;
+using NUnit.Allure.Core;
 
 namespace myNUnit.Tests
 {
+    [AllureNUnit]
     public class TestBase : PageTest
     {
         protected LoginPage LoginPage;
