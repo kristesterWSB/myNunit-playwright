@@ -73,7 +73,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-results
-          path: allure-results
+          path: downloaded-artifact
+      
+      - name: Flatten Allure Results
+        run: |
+          mkdir -p allure-results
+          find downloaded-artifact -type f -exec cp {} allure-results/ \;
+          echo "files to generate allure report:"
+          ls -la allure-results/   
 
       - name: Setup Node.js 
         uses: actions/setup-node@v4
