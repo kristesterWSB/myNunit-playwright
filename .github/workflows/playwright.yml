@@ -73,8 +73,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-results
+          path: allure-results
 
-      - name: Setup Node.js (potrzebny do Allure Action)
+      - name: Setup Node.js 
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -83,7 +84,7 @@ jobs:
         uses: simple-elf/allure-report-action@master
         id: allure-report
         with:
-          allure_results: . # Searching for allure-results in the current directory
+          allure_results: allure-results
           allure_history: allure-history
           keep_reports: 20
 
